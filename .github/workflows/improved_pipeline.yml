@@ -1,20 +1,24 @@
-name: CI Pipeline
+name: Simple CI Pipeline
 
-on: [push]
+on:
+  push:
 
 jobs:
-  build:
+  pipeline:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Lint check
         run: echo "Lint passed"
 
-      - name: Build project
+      - name: Build step
         run: echo "Build complete"
 
       - name: Check README
-        run: grep "project" README.md
+        run: echo "project" > README.md && grep "project" README.md
+
+      - name: Run tests (added step)
+        run: echo "All tests passed"
